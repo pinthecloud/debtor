@@ -42,7 +42,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-		<Grid Style="{StaticResource LayoutRootStyle}" Background="White">
+		<Grid Background="White">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="80"/>
 				<RowDefinition Height="*"/>
@@ -54,8 +54,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="40, 32, 17, 13">
-                    <Button x:Name="privatePolicyFlyoutBackButton" Margin="0,3,0,0"  Style="{StaticResource SettingsBackButtonStyle}" Click="privatePolicyFlyoutBackButton_Click"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="40,32,17,0">
+                    <Button x:Name="privatePolicyFlyoutBackButton" Margin="0,3,0,0"  Style="{StaticResource NavigationBackButtonNormalStyle}" Click="privatePolicyFlyoutBackButton_Click"/>
                     <TextBlock Margin="10,0,0,0" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="24.6667" Text="개인 정보 취급 방침" Foreground="White"/>
                 </StackPanel>
             </Grid>
@@ -64,7 +64,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black" Margin="10,0">
             		<Run Text="&quot;"/>
-            		<Run FontWeight="Bold" Text="세상을 바꾸는 15분"/>
+            		<Run FontWeight="Bold" Text="빚쟁이"/>
             		<Run Text="&quot; 어플리케이션은 관계 법령 및 개인정보 취급방침에 따라 사용자 개인정보 보호에 최선을 다 합니다."/>
             		<LineBreak/>
             		<Run Text=" "/>
@@ -100,9 +100,9 @@
             		<Run Text=" "/>
             		<LineBreak/>
             		<Run Text="서비스의 제공을 위해 별도로 타사와 개인정보를 공유하거나 제공할 상황이 발생할 경우,"/>
-            		<Run FontWeight="Bold" Text=" 세상을 바꾸는 15분"/>
+            		<Run FontWeight="Bold" Text=" 빚쟁이"/>
             		<Run Text="은 &quot;정보통신망 이용촉진 및 정보보호 등에 관한 법률&quot; 및 &quot;"/>
-            		<Run FontWeight="Bold" Text="세상을 바꾸는 15분"/>
+            		<Run FontWeight="Bold" Text="빚쟁이"/>
             		<Run Text=" 개인정보 취급방침&quot;에 따라 사용자에게 사전에 고지하거나 동의를 받습니다."/>
             		<LineBreak/>
             		<Run Text=" "/>

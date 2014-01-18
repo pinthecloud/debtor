@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Navigation;
 
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Popups;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Threading.Tasks;
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
 
@@ -31,16 +33,19 @@ namespace Debtor
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // Setting Pane
         private bool isEventRegistered;
-
-        // Used to determine the correct height to ensure our custom UI fills the screen.
         private Rect windowBounds;
-
-        // Desired width for the settings UI. UI guidelines specify this should be 346 or 646 depending on your needs.
         private double settingsWidth = 646;
-
-        // This is the container that will hold our custom content.
         private Popup settingsPopup;
+
+        // Local Value
+        private string id;
+        private string pw;
+
+        private MobileServiceUser user = null;
+        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
+        private MobileServiceCollection<Person, Person> people;
 
 
         /// <summary>
@@ -197,6 +202,55 @@ namespace Debtor
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
+        }
+
+        private async void loginButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // Real Code
+            MobileServiceUser user = await authenticate();
+
+            if (user != null) 
+            {
+                Person person = PersonFactory.makePerson(user);
+
+                if (!(await isExistedPerson(person)))
+                    await personTable.InsertAsync(person);
+
+                this.Frame.Navigate(typeof(TotalDebtPage), person);
+            }
+        }
+
+        private async Task<MobileServiceUser> authenticate()
+        {
+            try
+            {
+                user = await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
+            }
+            catch (InvalidOperationException)
+            { 
+            }
+
+            return user;
+        }
+
+        private async Task<bool> isExistedPerson(Person me)
+        {
+            try
+            {
+                string meIdText = me.idText;
+                people = await personTable
+                    .Where(person => person.idText == me.idText)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            if (people.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         #endregion

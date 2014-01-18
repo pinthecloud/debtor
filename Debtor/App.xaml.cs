@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Microsoft.WindowsAzure.MobileServices;
+
+
 // 새 응용 프로그램 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234227에 나와 있습니다.
 
 namespace Debtor
@@ -24,6 +27,11 @@ namespace Debtor
     /// </summary>
     sealed partial class App : Application
     {
+        public static MobileServiceClient MobileService = new MobileServiceClient(
+            "https://todolistrfrost77.azure-mobile.net/",
+            "qLojXFQxDwkmXDodIqxwoBxPvKqQDS78"
+            );
+
         /// <summary>
         /// Singleton 응용 프로그램 개체를 초기화합니다.  이것은 실행되는 작성 코드의 첫 번째
         /// 줄이며 따라서 main() 또는 WinMain()과 논리적으로 동일합니다.

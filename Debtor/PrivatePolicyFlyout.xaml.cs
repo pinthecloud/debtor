@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -99,6 +100,22 @@ namespace Debtor
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
+        }
+
+        private void privatePolicyFlyoutBackButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // First close our Flyout.
+            Popup parent = this.Parent as Popup;
+            if (parent != null)
+            {
+                parent.IsOpen = false;
+            }
+
+            // If the app is not snapped, then the back button shows the Settings pane again.
+            if (Windows.UI.ViewManagement.ApplicationView.Value != Windows.UI.ViewManagement.ApplicationViewState.Snapped)
+            {
+                SettingsPane.Show();
+            }
         }
 
         #endregion
