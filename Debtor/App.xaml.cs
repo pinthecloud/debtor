@@ -28,8 +28,8 @@ namespace Debtor
     sealed partial class App : Application
     {
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://todolistrfrost77.azure-mobile.net/",
-            "qLojXFQxDwkmXDodIqxwoBxPvKqQDS78"
+            "https://debtor.azure-mobile.net/",
+            "xVyJoXUzdLcvtmzpXnHbFRUiLQTgAZ33"
             );
 
         /// <summary>

@@ -27,8 +27,10 @@ namespace Debtor
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // Private
         private Person person;
-
+        private string name;
+        private int amount;
 
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
@@ -106,28 +108,10 @@ namespace Debtor
             navigationHelper.OnNavigatedFrom(e);
         }
 
-        private void amountTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
-        {
-            if (amountTextBox.Text.Length != 0)
-            {
-                debtButton.IsEnabled = true;
-            }
-            else
-            {
-                debtButton.IsEnabled = false;
-            }
-        }
-
-        private void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            // Go to debt
-
-            this.Frame.Navigate(typeof(TotalDebtPage), person);
-        }
-
         private void friendLiveIdTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
         {
-            if (friendLiveIdTextBox.Text.Length != 0)
+            name = friendLiveIdTextBox.Text.Trim();
+            if (name.Length != 0)
                 friendRegisterButton.IsEnabled = true;
             else
                 friendRegisterButton.IsEnabled = false;
@@ -135,7 +119,24 @@ namespace Debtor
 
         private void friendRegisterButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-        	// TODO: 여기에 구현된 이벤트 처리기를 추가하십시오.
+            // Make a Friend
+        }
+
+        private void amountTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
+        {
+            string amountString = amountTextBox.Text.Trim();
+            amount = Convert.ToInt32(amountString);
+            if (amountString.Length != 0)
+                debtButton.IsEnabled = true;
+            else
+                debtButton.IsEnabled = false;
+        }
+
+        private void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // Go to debt
+
+            this.Frame.Navigate(typeof(TotalDebtPage), person);
         }
 
         #endregion

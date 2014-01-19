@@ -19,6 +19,8 @@ using Windows.UI.ApplicationSettings;
 using Windows.UI.Popups;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
+using Microsoft.Live;
+
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
 
@@ -34,18 +36,12 @@ namespace Debtor
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         // Setting Pane
-        private bool isEventRegistered;
         private Rect windowBounds;
         private double settingsWidth = 646;
         private Popup settingsPopup;
 
-        // Local Value
-        private string id;
-        private string pw;
-
-        private MobileServiceUser user = null;
+        // Mobile Service
         private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
-        private MobileServiceCollection<Person, Person> people;
 
 
         /// <summary>
@@ -79,7 +75,6 @@ namespace Debtor
 
             // Add Setting Panel
             SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
-            this.isEventRegistered = true;
         }
 
         /// <summary>
@@ -206,41 +201,80 @@ namespace Debtor
 
         private async void loginButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            // Real Code
+            // Get User
             MobileServiceUser user = await authenticate();
-
-            if (user != null) 
+            
+            // Auth Success
+            if (user != null)
             {
-                Person person = PersonFactory.makePerson(user);
-
-                if (!(await isExistedPerson(person)))
-                    await personTable.InsertAsync(person);
-
-                this.Frame.Navigate(typeof(TotalDebtPage), person);
+                if (!(await isExistedPerson(user.MobileServiceAuthenticationToken)))
+                    this.Frame.Navigate(typeof(NamingPage), user);
+                else
+                    this.Frame.Navigate(typeof(TotalDebtPage), user);
             }
         }
 
+        // Normal Auth
         private async Task<MobileServiceUser> authenticate()
         {
+            MobileServiceUser user = null;
             try
             {
                 user = await App.MobileService
                     .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
             }
             catch (InvalidOperationException)
-            { 
+            {
             }
-
             return user;
         }
 
-        private async Task<bool> isExistedPerson(Person me)
+        // Single Sign on Auth
+        private async Task singleSIgnOnAuthenticate()
         {
+            LiveAuthClient liveIdClient = new LiveAuthClient("https://debtor.azure-mobile.net/");
+            LiveConnectSession session = null;
+
+            while (session == null)
+            {
+                // Force a logout to make it easier to test with multiple Microsoft Accounts
+                if (liveIdClient.CanLogout)
+                    liveIdClient.Logout();
+
+                LiveLoginResult result = await liveIdClient.LoginAsync(new[] { "wl.basic" });
+                LiveConnectSessionStatus a = result.Status;
+                if (result.Status == LiveConnectSessionStatus.Connected)
+                {
+                    session = result.Session;
+                    LiveConnectClient client = new LiveConnectClient(result.Session);
+                    LiveOperationResult meResult = await client.GetAsync("me");
+                    MobileServiceUser loginResult = await App.MobileService
+                        .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+
+                    string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
+                    var message = string.Format("You are now logged in - {0}", loginResult.UserId);
+                    var dialog = new MessageDialog(message, title);
+                    dialog.Commands.Add(new UICommand("OK"));
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    session = null;
+                    var dialog = new MessageDialog("You must log in.", "Login Required");
+                    dialog.Commands.Add(new UICommand("OK"));
+                    await dialog.ShowAsync();
+                }
+            }
+        }
+
+        // Check whether it exists in DB
+        private async Task<bool> isExistedPerson(string token)
+        {
+            MobileServiceCollection<Person, Person> people = null;
             try
             {
-                string meIdText = me.idText;
                 people = await personTable
-                    .Where(person => person.idText == me.idText)
+                    .Where(person => person.token == token)
                     .ToCollectionAsync();
             }
             catch (MobileServiceInvalidOperationException e)

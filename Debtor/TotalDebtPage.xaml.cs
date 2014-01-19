@@ -1,9 +1,11 @@
 ﻿using Debtor.Common;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -27,7 +29,13 @@ namespace Debtor
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // Mobile Service
+        private IMobileServiceTable<FriendRelation> friendRelationTable = App.MobileService.GetTable<FriendRelation>();
+        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
+
+        // Private
         private Person person;
+
 
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
@@ -96,12 +104,10 @@ namespace Debtor
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-
-            // Get parameter
             person = e.Parameter as Person;
 
             // Set Listview
-
+            debtListView.ItemsSource = getFriends(person);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -117,6 +123,40 @@ namespace Debtor
         private void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(DebtPage), person);
+        }
+
+        // Get Friends List
+        private async Task<List<Person>> getFriends(Person me)
+        {
+            // Get Relations
+            MobileServiceCollection<FriendRelation, FriendRelation> friendRelations = null;
+            try
+            {
+                friendRelations = await friendRelationTable
+                    .Where(friendRelation => friendRelation.host_person_id == me.id)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            // Get Friends
+            List<Person> people = new List<Person>();
+            try
+            {
+                foreach (FriendRelation friendRelation in friendRelations)
+                {
+                    var person = personTable
+                        .Where(p => p.id == friendRelation.friend_person_id)
+                        .Take(1);
+                    people.Add(person as Person);
+                }
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            return people;
         }
 
         #endregion

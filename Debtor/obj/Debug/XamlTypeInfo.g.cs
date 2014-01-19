@@ -124,7 +124,7 @@ namespace Debtor.Debtor_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[11];
+            _typeNameTable = new string[12];
             _typeNameTable[0] = "Debtor.DebtPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -134,10 +134,11 @@ namespace Debtor.Debtor_XamlTypeInfo
             _typeNameTable[6] = "Debtor.Common.NavigationHelper";
             _typeNameTable[7] = "Windows.UI.Xaml.DependencyObject";
             _typeNameTable[8] = "Debtor.MainPage";
-            _typeNameTable[9] = "Debtor.PrivatePolicyFlyout";
-            _typeNameTable[10] = "Debtor.TotalDebtPage";
+            _typeNameTable[9] = "Debtor.NamingPage";
+            _typeNameTable[10] = "Debtor.PrivatePolicyFlyout";
+            _typeNameTable[11] = "Debtor.TotalDebtPage";
 
-            _typeTable = new global::System.Type[11];
+            _typeTable = new global::System.Type[12];
             _typeTable[0] = typeof(global::Debtor.DebtPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -147,8 +148,9 @@ namespace Debtor.Debtor_XamlTypeInfo
             _typeTable[6] = typeof(global::Debtor.Common.NavigationHelper);
             _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObject);
             _typeTable[8] = typeof(global::Debtor.MainPage);
-            _typeTable[9] = typeof(global::Debtor.PrivatePolicyFlyout);
-            _typeTable[10] = typeof(global::Debtor.TotalDebtPage);
+            _typeTable[9] = typeof(global::Debtor.NamingPage);
+            _typeTable[10] = typeof(global::Debtor.PrivatePolicyFlyout);
+            _typeTable[11] = typeof(global::Debtor.TotalDebtPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -186,8 +188,9 @@ namespace Debtor.Debtor_XamlTypeInfo
         private object Activate_0_DebtPage() { return new global::Debtor.DebtPage(); }
         private object Activate_3_ObservableDictionary() { return new global::Debtor.Common.ObservableDictionary(); }
         private object Activate_8_MainPage() { return new global::Debtor.MainPage(); }
-        private object Activate_9_PrivatePolicyFlyout() { return new global::Debtor.PrivatePolicyFlyout(); }
-        private object Activate_10_TotalDebtPage() { return new global::Debtor.TotalDebtPage(); }
+        private object Activate_9_NamingPage() { return new global::Debtor.NamingPage(); }
+        private object Activate_10_PrivatePolicyFlyout() { return new global::Debtor.PrivatePolicyFlyout(); }
+        private object Activate_11_TotalDebtPage() { return new global::Debtor.TotalDebtPage(); }
         private void MapAdd_3_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
@@ -255,17 +258,25 @@ namespace Debtor.Debtor_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 9:   //  Debtor.PrivatePolicyFlyout
+            case 9:   //  Debtor.NamingPage
                 userType = new global::Debtor.Debtor_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_PrivatePolicyFlyout;
+                userType.Activator = Activate_9_NamingPage;
                 userType.AddMemberName("DefaultViewModel");
                 userType.AddMemberName("NavigationHelper");
                 xamlType = userType;
                 break;
 
-            case 10:   //  Debtor.TotalDebtPage
+            case 10:   //  Debtor.PrivatePolicyFlyout
                 userType = new global::Debtor.Debtor_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_TotalDebtPage;
+                userType.Activator = Activate_10_PrivatePolicyFlyout;
+                userType.AddMemberName("DefaultViewModel");
+                userType.AddMemberName("NavigationHelper");
+                xamlType = userType;
+                break;
+
+            case 11:   //  Debtor.TotalDebtPage
+                userType = new global::Debtor.Debtor_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_11_TotalDebtPage;
                 userType.AddMemberName("DefaultViewModel");
                 userType.AddMemberName("NavigationHelper");
                 xamlType = userType;
@@ -295,22 +306,32 @@ namespace Debtor.Debtor_XamlTypeInfo
             var that = (global::Debtor.MainPage)instance;
             return that.NavigationHelper;
         }
-        private object get_4_PrivatePolicyFlyout_DefaultViewModel(object instance)
+        private object get_4_NamingPage_DefaultViewModel(object instance)
+        {
+            var that = (global::Debtor.NamingPage)instance;
+            return that.DefaultViewModel;
+        }
+        private object get_5_NamingPage_NavigationHelper(object instance)
+        {
+            var that = (global::Debtor.NamingPage)instance;
+            return that.NavigationHelper;
+        }
+        private object get_6_PrivatePolicyFlyout_DefaultViewModel(object instance)
         {
             var that = (global::Debtor.PrivatePolicyFlyout)instance;
             return that.DefaultViewModel;
         }
-        private object get_5_PrivatePolicyFlyout_NavigationHelper(object instance)
+        private object get_7_PrivatePolicyFlyout_NavigationHelper(object instance)
         {
             var that = (global::Debtor.PrivatePolicyFlyout)instance;
             return that.NavigationHelper;
         }
-        private object get_6_TotalDebtPage_DefaultViewModel(object instance)
+        private object get_8_TotalDebtPage_DefaultViewModel(object instance)
         {
             var that = (global::Debtor.TotalDebtPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_7_TotalDebtPage_NavigationHelper(object instance)
+        private object get_9_TotalDebtPage_NavigationHelper(object instance)
         {
             var that = (global::Debtor.TotalDebtPage)instance;
             return that.NavigationHelper;
@@ -347,28 +368,40 @@ namespace Debtor.Debtor_XamlTypeInfo
                 xamlMember.Getter = get_3_MainPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "Debtor.NamingPage.DefaultViewModel":
+                userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.NamingPage");
+                xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "Debtor.Common.ObservableDictionary");
+                xamlMember.Getter = get_4_NamingPage_DefaultViewModel;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Debtor.NamingPage.NavigationHelper":
+                userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.NamingPage");
+                xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "NavigationHelper", "Debtor.Common.NavigationHelper");
+                xamlMember.Getter = get_5_NamingPage_NavigationHelper;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Debtor.PrivatePolicyFlyout.DefaultViewModel":
                 userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.PrivatePolicyFlyout");
                 xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "Debtor.Common.ObservableDictionary");
-                xamlMember.Getter = get_4_PrivatePolicyFlyout_DefaultViewModel;
+                xamlMember.Getter = get_6_PrivatePolicyFlyout_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Debtor.PrivatePolicyFlyout.NavigationHelper":
                 userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.PrivatePolicyFlyout");
                 xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "NavigationHelper", "Debtor.Common.NavigationHelper");
-                xamlMember.Getter = get_5_PrivatePolicyFlyout_NavigationHelper;
+                xamlMember.Getter = get_7_PrivatePolicyFlyout_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Debtor.TotalDebtPage.DefaultViewModel":
                 userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.TotalDebtPage");
                 xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "Debtor.Common.ObservableDictionary");
-                xamlMember.Getter = get_6_TotalDebtPage_DefaultViewModel;
+                xamlMember.Getter = get_8_TotalDebtPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Debtor.TotalDebtPage.NavigationHelper":
                 userType = (global::Debtor.Debtor_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Debtor.TotalDebtPage");
                 xamlMember = new global::Debtor.Debtor_XamlTypeInfo.XamlMember(this, "NavigationHelper", "Debtor.Common.NavigationHelper");
-                xamlMember.Getter = get_7_TotalDebtPage_NavigationHelper;
+                xamlMember.Getter = get_9_TotalDebtPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             }

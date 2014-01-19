@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="8fc83d4e-c4b7-40af-82ed-1002f501e3ca" Publisher="CN=Seungmin" Version="1.0.0.0" />
+  <Identity Name="58514Seungmin.38124A4B2577" Publisher="CN=5F5145DF-4FDD-41CD-9C55-BEE4732A445B" Version="1.1.0.0" />
   <Properties>
     <DisplayName>빚쟁이</DisplayName>
     <PublisherDisplayName>Seungmin</PublisherDisplayName>

@@ -61,3 +61,9 @@ c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\
 c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\Microsoft.WindowsAzure.Mobile.pri
 c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\Microsoft.WindowsAzure.Mobile\qualifiers.txt
 c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\Microsoft.WindowsAzure.Mobile.Ext.pri.xml
+c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\Microsoft.Live.dll
+C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\NamingPage.g.i.cs
+C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\NamingPage.g.cs
+C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\NamingPage.xbf
+C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\NamingPage.xaml
+C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\obj\Debug\NamingPage.xbf

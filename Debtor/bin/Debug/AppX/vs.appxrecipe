@@ -5,93 +5,105 @@
     <WindowsUser>Seungmin</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>8fc83d4e-c4b7-40af-82ed-1002f501e3ca</PackageIdentityName>
-    <RegisteredManifestChecksum>75084946B48B163B771ED0C8845D103CD341860EA8BD4B3504F36E20AAD7F3AA</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>8fc83d4e-c4b7-40af-82ed-1002f501e3ca_1.0.0.0_neutral__k05vfas3m1756</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>8fc83d4e-c4b7-40af-82ed-1002f501e3ca_k05vfas3m1756!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>8fc83d4e-c4b7-40af-82ed-1002f501e3ca</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=Seungmin</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <PackageIdentityName>58514Seungmin.38124A4B2577</PackageIdentityName>
+    <RegisteredManifestChecksum>542D077BC17EB8AB426D088718F5D6BB3BFE70ACCDAD55DD8F20059210B00693</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>58514Seungmin.38124A4B2577_1.1.0.0_neutral__k6sm0fw9r4nmj</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>58514Seungmin.38124A4B2577_k6sm0fw9r4nmj!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>58514Seungmin.38124A4B2577</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=5F5145DF-4FDD-41CD-9C55-BEE4732A445B</RegisteredPackagePublisher>
+    <RegisteredVersion>1.1.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-01-18T08:31:01.933</Modified>
+      <Modified>2014-01-19T19:38:57.682</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\Debtor.exe">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\Debtor.exe">
       <PackagePath>Debtor.exe</PackagePath>
-      <Modified>2014-01-18T11:07:41.488</Modified>
+      <Modified>2014-01-19T21:05:22.699</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.dll">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\LiveSDK.5.5\WindowsXAML\Microsoft.Live.dll">
+      <PackagePath>Microsoft.Live.dll</PackagePath>
+      <Modified>2014-01-18T11:42:05.713</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.dll">
       <PackagePath>Microsoft.WindowsAzure.Mobile.dll</PackagePath>
       <Modified>2014-01-18T06:56:09.835</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.dll">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.dll">
       <PackagePath>Microsoft.WindowsAzure.Mobile.Ext.dll</PackagePath>
       <Modified>2014-01-18T06:56:09.848</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\packages\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
       <Modified>2014-01-18T06:56:07.973</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Extensions.dll">
       <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
       <Modified>2014-01-18T06:56:09.731</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Primitives.dll">
       <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
       <Modified>2014-01-18T06:56:09.745</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Fonts\LiveSymbol.ttf">
+      <PackagePath>Fonts\LiveSymbol.ttf</PackagePath>
+      <Modified>2014-01-18T11:42:06.755</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-04-25T21:12:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-04-25T21:12:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-04-25T21:12:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-04-25T21:12:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Common\ReadMe.txt">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Common\ReadMe.txt">
       <PackagePath>Common\ReadMe.txt</PackagePath>
       <Modified>2014-01-18T01:35:05.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-01-18T02:21:07.125</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtPage.xbf">
       <PackagePath>DebtPage.xbf</PackagePath>
-      <Modified>2014-01-18T11:06:29.157</Modified>
+      <Modified>2014-01-19T20:14:42.781</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-01-18T08:56:11.474</Modified>
+      <Modified>2014-01-19T19:38:56.395</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\PrivatePolicyFlyout.xbf">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\NamingPage.xbf">
+      <PackagePath>NamingPage.xbf</PackagePath>
+      <Modified>2014-01-19T19:38:56.398</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\PrivatePolicyFlyout.xbf">
       <PackagePath>PrivatePolicyFlyout.xbf</PackagePath>
       <Modified>2014-01-18T04:01:56.378</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\TotalDebtPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\TotalDebtPage.xbf">
       <PackagePath>TotalDebtPage.xbf</PackagePath>
-      <Modified>2014-01-18T08:30:59.563</Modified>
+      <Modified>2014-01-19T21:05:22.291</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-01-18T11:06:29.690</Modified>
+      <Modified>2014-01-19T21:03:55.321</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
