@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Debtor
 {
-    interface Bank
+    public interface Bank
     {
     }
 }

@@ -207,10 +207,13 @@ namespace Debtor
             // Auth Success
             if (user != null)
             {
-                if (!(await isExistedPerson(user.MobileServiceAuthenticationToken)))
+                Person person = await isExistedPerson(user.UserId);
+                if (person == null)   // First Login
                     this.Frame.Navigate(typeof(NamingPage), user);
-                else
-                    this.Frame.Navigate(typeof(TotalDebtPage), user);
+                else   // Again Login
+                {
+                    this.Frame.Navigate(typeof(TotalDebtPage), person);
+                }
             }
         }
 
@@ -268,13 +271,13 @@ namespace Debtor
         }
 
         // Check whether it exists in DB
-        private async Task<bool> isExistedPerson(string token)
+        private async Task<Person> isExistedPerson(string person_live_id)
         {
             MobileServiceCollection<Person, Person> people = null;
             try
             {
                 people = await personTable
-                    .Where(person => person.token == token)
+                    .Where(p => p.person_live_id == person_live_id)
                     .ToCollectionAsync();
             }
             catch (MobileServiceInvalidOperationException e)
@@ -282,9 +285,9 @@ namespace Debtor
             }
 
             if (people.Count > 0)
-                return true;
+                return people.First();
             else
-                return false;
+                return null;
         }
 
         #endregion

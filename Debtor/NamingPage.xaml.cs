@@ -127,6 +127,7 @@ namespace Debtor
         {
             if (!(await isExistedName(name)))
             {
+                nameTextBox.Text = "";
                 Person person = PersonFactory.makePerson(user, name);
                 await personTable.InsertAsync(person);
                 this.Frame.Navigate(typeof(TotalDebtPage), person);

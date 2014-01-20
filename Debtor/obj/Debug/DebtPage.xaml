@@ -48,20 +48,23 @@
         </Grid>
         <Grid Grid.Row="1">
         	<Grid.RowDefinitions>
-        		<RowDefinition Height="20"/>
+        		<RowDefinition Height="60"/>
         		<RowDefinition Height="3*"/>
         		<RowDefinition/>
         		<RowDefinition/>
         		<RowDefinition/>
         	</Grid.RowDefinitions>
-        	<ListView Grid.Row="1"/>
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="친구 리스트" VerticalAlignment="Center" FontSize="33.333" Margin="120,0,0,0"/>
+        	<Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="120,0">
+        		<ListView x:ConnectionId='5' x:Name="friendListView"                                                    SelectionMode="Single"/>
+        	</Border>
         	<StackPanel VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
         		<TextBox x:ConnectionId='3' x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="친구의 이름을 입력해주세요." Width="500" FontSize="33.333" Margin="0,0,20,0"                                              />
         		<Button x:ConnectionId='4' x:Name="friendRegisterButton" Content="친구등록" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="33.333" IsEnabled="False"                                   />
         	</StackPanel>
         	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center">
         		<TextBlock TextWrapping="Wrap" Text="얼마?" FontSize="33.333" Margin="0,0,20,0" VerticalAlignment="Center"/>
-        		<TextBox x:ConnectionId='2' x:Name="amountTextBox" TextWrapping="Wrap" FontSize="33.333"                                         PlaceholderText="" Width="200" Height="70" InputScope="Number"/>
+        		<TextBox x:ConnectionId='2' x:Name="amountTextBox" TextWrapping="Wrap" FontSize="33.333"                                         Width="200" Height="70" InputScope="Number"                                 />
         		<TextBlock TextWrapping="Wrap" Text="원" FontSize="33.333" VerticalAlignment="Center"/>
         	</StackPanel>
         	<Button x:ConnectionId='1' x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="33.333"                          IsEnabled="False"/>

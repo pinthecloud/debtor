@@ -17,13 +17,13 @@
     <AppXManifest Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-01-19T19:38:57.682</Modified>
+      <Modified>2014-01-20T12:11:19.225</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\Debtor.exe">
       <PackagePath>Debtor.exe</PackagePath>
-      <Modified>2014-01-19T21:05:22.699</Modified>
+      <Modified>2014-01-20T13:35:11.169</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\LiveSDK.5.5\WindowsXAML\Microsoft.Live.dll">
       <PackagePath>Microsoft.Live.dll</PackagePath>
@@ -81,9 +81,17 @@
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-01-18T02:21:07.125</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtListViewItem.xbf">
+      <PackagePath>DebtListViewItem.xbf</PackagePath>
+      <Modified>2014-01-20T13:35:10.689</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtPage.xbf">
       <PackagePath>DebtPage.xbf</PackagePath>
-      <Modified>2014-01-19T20:14:42.781</Modified>
+      <Modified>2014-01-20T13:28:31.178</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\FriendListViewItem.xbf">
+      <PackagePath>FriendListViewItem.xbf</PackagePath>
+      <Modified>2014-01-20T08:13:12.298</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
@@ -99,11 +107,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\TotalDebtPage.xbf">
       <PackagePath>TotalDebtPage.xbf</PackagePath>
-      <Modified>2014-01-19T21:05:22.291</Modified>
+      <Modified>2014-01-20T13:34:06.728</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-01-19T21:03:55.321</Modified>
+      <Modified>2014-01-20T13:35:11.992</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

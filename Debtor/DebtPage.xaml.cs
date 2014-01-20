@@ -1,11 +1,14 @@
 ﻿using Debtor.Common;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,10 +30,16 @@ namespace Debtor
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // Mobile Service
+        private IMobileServiceTable<Debt> debtTable = App.MobileService.GetTable<Debt>();
+        private IMobileServiceTable<FriendRelation> friendRelationTable = App.MobileService.GetTable<FriendRelation>();
+        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
+
         // Private
-        private Person person;
+        private Person me;
         private string name;
         private int amount;
+
 
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
@@ -96,11 +105,14 @@ namespace Debtor
         /// 탐색 매개 변수는 LoadState 메서드 
         /// 및 이전 세션 동안 유지된 페이지 상태에서 사용할 수 있습니다.
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             // Get parameter
             navigationHelper.OnNavigatedTo(e);
-            person = e.Parameter as Person;
+            me = e.Parameter as Person;
+
+            // Set Listview
+            await setDebtListView(me);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -117,26 +129,226 @@ namespace Debtor
                 friendRegisterButton.IsEnabled = false;
         }
 
-        private void friendRegisterButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void friendRegisterButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             // Make a Friend
+            if ((await addFriend(me, friendLiveIdTextBox.Text)))
+            {
+                friendLiveIdTextBox.Text = "";
+                await setDebtListView(me);
+            }
         }
 
-        private void amountTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
+        private void friendListView_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
         {
             string amountString = amountTextBox.Text.Trim();
-            amount = Convert.ToInt32(amountString);
-            if (amountString.Length != 0)
+            if (amountString.Length != 0 && friendListView.SelectedItems.Count > 0)
                 debtButton.IsEnabled = true;
             else
                 debtButton.IsEnabled = false;
         }
 
-        private void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void amountTextBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            // Go to debt
+            if ((uint)e.Key >= (uint)Windows.System.VirtualKey.Number0
+                    && (uint)e.Key <= (uint)Windows.System.VirtualKey.Number9)
+                e.Handled = false;
+            else e.Handled = true;  
+        }
 
-            this.Frame.Navigate(typeof(TotalDebtPage), person);
+        private void amountTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
+        {
+            string amountString = amountTextBox.Text.Trim();
+            if (amountString.Length != 0 && friendListView.SelectedItems.Count > 0)
+            {
+                debtButton.IsEnabled = true;
+                amount = Convert.ToInt32(amountString);
+            }
+            else
+            {
+                debtButton.IsEnabled = false;
+            } 
+        }
+
+        private async void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            amountTextBox.Text = "";
+            Person friend = (friendListView.SelectedItem as FriendListViewItem).person;
+            await borrow(me, friend, amount);
+            await borrow(friend, me, -amount);
+            this.Frame.Navigate(typeof(TotalDebtPage), me);
+        }
+
+        // Set List View
+        private async Task setDebtListView(Person me)
+        {
+            List<Person> people = await getFriends(me);
+
+            // Set
+            friendListView.Items.Clear();
+            foreach (Person person in people)
+            {
+                FriendListViewItem friend = new FriendListViewItem(person);
+                friendListView.Items.Add(friend);
+            }
+        }
+
+
+        // Get Friends List
+        private async Task<List<Person>> getFriends(Person me)
+        {
+            // Get Relations
+            MobileServiceCollection<FriendRelation, FriendRelation> friendRelations = null;
+            try
+            {
+                friendRelations = await friendRelationTable
+                    .Where(f => f.host_person_live_id == me.person_live_id)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            // Do job if he has friends
+            List<Person> people = new List<Person>();
+
+            // Get Friends
+            try
+            {
+                foreach (FriendRelation friendRelation in friendRelations)
+                {
+                    MobileServiceCollection<Person, Person> friend = null;
+                    try
+                    {
+                        friend = await personTable
+                            .Where(p => p.person_live_id == friendRelation.friend_person_live_id)
+                            .ToCollectionAsync();
+                    }
+                    catch (MobileServiceInvalidOperationException e)
+                    {
+                    }
+                    people.Add(friend.First());
+                }
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            return people;
+        }
+
+
+        // Add Friend
+        private async Task<bool> addFriend(Person me, string friendName)
+        {
+            bool result = false;
+
+            MessageDialog dialog = null;
+            string title = null;
+            string message = null;
+
+            Person friend = await isExistedPerson(friendName);
+
+            if (friend == null)   // No registered friend
+            {
+                title = "없는 회원";
+                message = "빚쟁이에 아직 등록되지 않은 회원입니다.";
+            }
+            else   // registered friend
+            {
+                if (!me.person_live_id.Equals(friend.person_live_id))
+                {
+                    if ((await isAlreadyFriend(friend)))   // He was already registed as my friend
+                    {
+                        title = "친구";
+                        message = "우리는 이미 친구입니다.";
+                    }
+                    else   // New friend
+                    {
+                        await friendRelationTable.InsertAsync(new FriendRelation(me.person_live_id, friend.person_live_id));
+                        await friendRelationTable.InsertAsync(new FriendRelation(friend.person_live_id, me.person_live_id));
+
+                        title = "친구 등록";
+                        message = friendName + "님을 친구로 등록하였습니다.";
+                        result = true;
+                    }
+                }
+                else
+                {
+                    title = "나 자신";
+                    message = "자신은 친구로 등록하지 못합니다.";
+                }
+            }
+
+            dialog = new MessageDialog(message, title);
+            dialog.Commands.Add(new UICommand("확인"));
+            await dialog.ShowAsync();
+
+            return result;
+        }
+
+
+        // Check whether it exists in DB
+        private async Task<Person> isExistedPerson(string friendName)
+        {
+            MobileServiceCollection<Person, Person> people = null;
+            try
+            {
+                people = await personTable
+                    .Where(p => p.person_name == friendName)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            if (people.Count > 0)
+                return people.First();
+            else
+                return null;
+        }
+
+        // Check whether it exists in DB
+        private async Task<bool> isAlreadyFriend(Person friend)
+        {
+            MobileServiceCollection<FriendRelation, FriendRelation> friendRelation = null;
+            try
+            {
+                friendRelation = await friendRelationTable
+                    .Where(f => f.friend_person_live_id == friend.person_live_id)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            if (friendRelation.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        // Go to debt
+        private async Task borrow(Person me, Person friend, int amount)
+        {
+            MobileServiceCollection<Debt, Debt> debt = null;
+            try
+            {
+                debt = await debtTable
+                    .Where(d => d.host_person_name == me.person_name && d.friend_person_name == friend.person_name)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            if (debt.Count > 0)
+            {
+                debt.First().addDebt(amount);
+                await debtTable.UpdateAsync(debt.First());
+            }
+            else
+                await debtTable.InsertAsync(new Debt(me.person_name, friend.person_name, amount));
         }
 
         #endregion

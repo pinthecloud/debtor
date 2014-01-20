@@ -60,8 +60,14 @@
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtListViewItem.xbf">
+      <PackagePath>DebtListViewItem.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtPage.xbf">
       <PackagePath>DebtPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\FriendListViewItem.xbf">
+      <PackagePath>FriendListViewItem.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>

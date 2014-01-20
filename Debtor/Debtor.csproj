@@ -104,7 +104,15 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Page Include="DebtListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DebtPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FriendListViewItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,8 +143,14 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Debt.cs" />
+    <Compile Include="DebtListViewItem.xaml.cs">
+      <DependentUpon>DebtListViewItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DebtPage.xaml.cs">
       <DependentUpon>DebtPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FriendListViewItem.xaml.cs">
+      <DependentUpon>FriendListViewItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FriendManager.cs" />
     <Compile Include="FriendRelation.cs" />

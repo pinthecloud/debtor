@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="Debtor.DebtListViewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Debtor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" >
+    
+    <Grid>
+    	<Border BorderBrush="Black" BorderThickness="1">
+    		<StackPanel Orientation="Horizontal">
+    			<StackPanel Orientation="Horizontal" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,120,0">
+    				<TextBlock TextWrapping="Wrap" Text="이름 :" HorizontalAlignment="Right" Margin="0,0,20,0" FontSize="33.333"/>
+    				<TextBlock x:Name="nameText" TextWrapping="Wrap" HorizontalAlignment="Right" FontSize="33.333"/>
+    			</StackPanel>
+    			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+    				<TextBlock TextWrapping="Wrap" Text="빚 :" FontSize="33.333" Margin="0,0,20,0"/>
+    				<TextBlock x:Name="amountText" TextWrapping="Wrap" FontSize="33.333"/>
+    				<TextBlock TextWrapping="Wrap" Text="원" FontSize="33.333"/>
+    			</StackPanel>
+    		</StackPanel>
+    	</Border>
+
+    </Grid>
+</UserControl>
+

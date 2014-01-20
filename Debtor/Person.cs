@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Debtor
 {
-    class Person
+    public class Person
     {
         public string id { get; set; }
 

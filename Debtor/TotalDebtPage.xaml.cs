@@ -30,11 +30,10 @@ namespace Debtor
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         // Mobile Service
-        private IMobileServiceTable<FriendRelation> friendRelationTable = App.MobileService.GetTable<FriendRelation>();
-        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
+        private IMobileServiceTable<Debt> debtTable = App.MobileService.GetTable<Debt>();
 
         // Private
-        private Person person;
+        private Person me;
 
 
         /// <summary>
@@ -101,13 +100,12 @@ namespace Debtor
         /// 탐색 매개 변수는 LoadState 메서드 
         /// 및 이전 세션 동안 유지된 페이지 상태에서 사용할 수 있습니다.
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-            person = e.Parameter as Person;
+            me = e.Parameter as Person;
 
-            // Set Listview
-            debtListView.ItemsSource = getFriends(person);
+            await setDebtListView(me);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -122,41 +120,43 @@ namespace Debtor
 
         private void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DebtPage), person);
+            this.Frame.Navigate(typeof(DebtPage), me);
         }
 
-        // Get Friends List
-        private async Task<List<Person>> getFriends(Person me)
+        // Set DebtListView
+        private async Task setDebtListView(Person me)
+        {
+            MobileServiceCollection<Debt, Debt> debts = await getDebts(me);
+            int amount = 0;
+
+            if (debts.Count > 0)
+            {
+                debtListView.Items.Clear();
+                foreach (Debt debt in debts)
+                {
+                    amount += debt.amount;
+                    DebtListViewItem debtListViewItem = new DebtListViewItem(debt);
+                    debtListView.Items.Add(debtListViewItem);
+                }
+                totalDebtText.Text = "" + amount;
+            }
+        }
+
+        private async Task<MobileServiceCollection<Debt, Debt>> getDebts(Person me)
         {
             // Get Relations
-            MobileServiceCollection<FriendRelation, FriendRelation> friendRelations = null;
+            MobileServiceCollection<Debt, Debt> debts = null;
             try
             {
-                friendRelations = await friendRelationTable
-                    .Where(friendRelation => friendRelation.host_person_id == me.id)
+                debts = await debtTable
+                    .Where(d => d.host_person_name == me.person_name)
                     .ToCollectionAsync();
             }
             catch (MobileServiceInvalidOperationException e)
             {
             }
 
-            // Get Friends
-            List<Person> people = new List<Person>();
-            try
-            {
-                foreach (FriendRelation friendRelation in friendRelations)
-                {
-                    var person = personTable
-                        .Where(p => p.id == friendRelation.friend_person_id)
-                        .Take(1);
-                    people.Add(person as Person);
-                }
-            }
-            catch (MobileServiceInvalidOperationException e)
-            {
-            }
-
-            return people;
+            return debts;
         }
 
         #endregion

@@ -11,7 +11,7 @@ namespace Debtor
     {
         private static Bank bankInstance { get; set; }
         private static FriendManager friendManagerInstance { get; set; }
-
+        
 
         public static Person makePerson(MobileServiceUser user, string person_name)
         {
