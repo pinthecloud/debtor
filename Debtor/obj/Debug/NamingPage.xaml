@@ -43,9 +43,9 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
         	<StackPanel Orientation="Horizontal" Margin="0,0,0,20">
         		<TextBlock TextWrapping="Wrap" Text="이름" FontSize="33.333" VerticalAlignment="Center" Margin="0,0,20,0"/>
-        		<TextBox x:ConnectionId='2' x:Name="nameTextBox" TextWrapping="Wrap" FontSize="33.333" Height="70" MaxLength="10" PlaceholderText="10글자 내의 이름을 정해주세요."                                      />
+        		<TextBox x:ConnectionId='0' x:Name="nameTextBox" TextWrapping="Wrap" FontSize="33.333" Height="70" MaxLength="10" PlaceholderText="10글자 내의 이름을 정해주세요."                                      />
         	</StackPanel>
-        	<Button x:ConnectionId='1' x:Name="makeAccountButton" Content="계정 생성" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="33.333"                                 IsEnabled="False"/>
+        	<Button x:ConnectionId='0' x:Name="makeAccountButton" Content="계정 생성" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="33.333"                                 IsEnabled="False"/>
         </StackPanel>
     </Grid>
 </Page>

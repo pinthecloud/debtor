@@ -39,7 +39,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="pageTitle" Text="빚쟁이" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-            <Button x:ConnectionId='2' x:Name="changeAccount" Content="계정바꾸기" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,40,0"                            />
+            <Button x:ConnectionId='0' x:Name="changeAccount" Content="계정바꾸기" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,40,0"                            />
         </Grid>
         <Grid Grid.Row="1">
         	<Grid.RowDefinitions>
@@ -53,7 +53,7 @@
         		<TextBlock TextWrapping="Wrap" Text="원" FontSize="26.667"/>
         	</StackPanel>
         	<ListView x:Name="debtListView" Margin="0" Grid.Row="1" SelectionMode="None"/>
-        	<Button x:ConnectionId='1' x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="33.333"                         />
+        	<Button x:ConnectionId='0' x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="33.333"                         />
         </Grid>
     </Grid>
 </Page>

@@ -1,1 +1,1 @@
-C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Debtor.csproj;neutral
+C:\Users\Chaesoo Rim\Documents\GitHub\debtor\Debtor\Debtor.csproj;neutral
