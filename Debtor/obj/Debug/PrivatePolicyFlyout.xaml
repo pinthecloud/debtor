@@ -55,7 +55,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="40,32,17,0">
-                    <Button x:ConnectionId='1' x:Name="privatePolicyFlyoutBackButton" Margin="0,3,0,0"  Style="{StaticResource NavigationBackButtonNormalStyle}"                                            />
+                    <Button x:ConnectionId='0' x:Name="privatePolicyFlyoutBackButton" Margin="0,3,0,0"  Style="{StaticResource NavigationBackButtonNormalStyle}"                                            />
                     <TextBlock Margin="10,0,0,0" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="24.6667" Text="개인 정보 취급 방침" Foreground="White"/>
                 </StackPanel>
             </Grid>
