@@ -1,14 +1,11 @@
 ﻿using Debtor.Common;
-using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,22 +21,11 @@ namespace Debtor
     /// <summary>
     /// 대부분의 응용 프로그램에 공통되는 특성을 제공하는 기본 페이지입니다.
     /// </summary>
-    public sealed partial class NamingPage : Page
+    public sealed partial class InstructionPage : Page
     {
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        // Mobile Service
-        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
-
-        // Settings
-        Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-
-        // Private
-        private MobileServiceUser user;
-        private string name;
-
 
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
@@ -59,7 +45,7 @@ namespace Debtor
         }
 
 
-        public NamingPage()
+        public InstructionPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -108,60 +94,11 @@ namespace Debtor
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-            user = e.Parameter as MobileServiceUser;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
-        }
-
-        private void nameTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
-        {
-            // Get Name
-            name = nameTextBox.Text.Trim();
-            if (name.Length != 0)
-                makeAccountButton.IsEnabled = true;
-            else
-                makeAccountButton.IsEnabled = false;
-        }
-
-        private async void makeAccountButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (!(await isExistedName(name)))
-            {
-                Person person = PersonFactory.makePerson(user.UserId, name, user.MobileServiceAuthenticationToken);
-                await personTable.InsertAsync(person);
-                this.Frame.Navigate(typeof(TotalDebtPage), person);
-            }
-            else
-            {
-                string title = "이름 중복";
-                string message = "이미 존재하는 이름입니다.";
-                MessageDialog dialog = new MessageDialog(message, title);
-                dialog.Commands.Add(new UICommand("확인"));
-                await dialog.ShowAsync();
-            }
-        }
-
-        // Check whether it exists in DB
-        private async Task<bool> isExistedName(string name)
-        {
-            MobileServiceCollection<Person, Person> people = null;
-            try
-            {
-                people = await personTable
-                    .Where(person => person.person_name == name)
-                    .ToCollectionAsync();
-            }
-            catch (MobileServiceInvalidOperationException e)
-            {
-            }
-
-            if (people.Count > 0)
-                return true;
-            else
-                return false;
         }
 
         #endregion

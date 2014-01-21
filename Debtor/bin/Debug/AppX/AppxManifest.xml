@@ -22,7 +22,14 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="Debtor.exe" EntryPoint="Debtor.App">
-      <m2:VisualElements DisplayName="빚쟁이" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="빚쟁이 앱은 자주 소액의 빚을 지는 친구 사이끼리 화폐를 통해 기록하는 앱 입니다." ForegroundText="light" BackgroundColor="#20B2AA">
+      <m2:VisualElements DisplayName="빚쟁이" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="빚쟁이 앱은 친구와 연결하여 돈관계를 기록해주는 앱 입니다. 자주 소액으로 빚을 지는 친구끼리 사용하기에 좋습니다. 빚쟁이 앱과 함께 친구와 깨끗한 돈관계를 맺으세요." ForegroundText="light" BackgroundColor="#20B2AA">
+        <m2:DefaultTile ShortName="빚쟁이" Square310x310Logo="Assets\BigLogo.png" Wide310x150Logo="Assets\WideLogo.png" DefaultSize="square150x150Logo">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+            <m2:ShowOn Tile="wide310x150Logo" />
+            <m2:ShowOn Tile="square310x310Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
         <m2:InitialRotationPreference>
           <m2:Rotation Preference="landscape" />

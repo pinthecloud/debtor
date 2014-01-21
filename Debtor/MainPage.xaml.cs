@@ -43,7 +43,6 @@ namespace Debtor
         // Mobile Service
         private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
 
-
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
         /// </summary>
@@ -232,44 +231,6 @@ namespace Debtor
             return user;
         }
 
-        // Single Sign on Auth
-        private async Task singleSIgnOnAuthenticate()
-        {
-            LiveAuthClient liveIdClient = new LiveAuthClient("https://debtor.azure-mobile.net/");
-            LiveConnectSession session = null;
-
-            while (session == null)
-            {
-                // Force a logout to make it easier to test with multiple Microsoft Accounts
-                if (liveIdClient.CanLogout)
-                    liveIdClient.Logout();
-
-                LiveLoginResult result = await liveIdClient.LoginAsync(new[] { "wl.basic" });
-                LiveConnectSessionStatus a = result.Status;
-                if (result.Status == LiveConnectSessionStatus.Connected)
-                {
-                    session = result.Session;
-                    LiveConnectClient client = new LiveConnectClient(result.Session);
-                    LiveOperationResult meResult = await client.GetAsync("me");
-                    MobileServiceUser loginResult = await App.MobileService
-                        .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
-
-                    string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
-                    var message = string.Format("You are now logged in - {0}", loginResult.UserId);
-                    var dialog = new MessageDialog(message, title);
-                    dialog.Commands.Add(new UICommand("OK"));
-                    await dialog.ShowAsync();
-                }
-                else
-                {
-                    session = null;
-                    var dialog = new MessageDialog("You must log in.", "Login Required");
-                    dialog.Commands.Add(new UICommand("OK"));
-                    await dialog.ShowAsync();
-                }
-            }
-        }
-
         // Check whether it exists in DB
         private async Task<Person> isExistedPerson(string person_live_id)
         {
@@ -288,6 +249,11 @@ namespace Debtor
                 return people.First();
             else
                 return null;
+        }
+
+        private void helpAppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(InstructionPage));
         }
 
         #endregion

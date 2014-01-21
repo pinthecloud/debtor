@@ -153,26 +153,27 @@ namespace Debtor
             if ((uint)e.Key >= (uint)Windows.System.VirtualKey.Number0
                     && (uint)e.Key <= (uint)Windows.System.VirtualKey.Number9)
                 e.Handled = false;
-            else e.Handled = true;  
+            else e.Handled = true;
         }
 
         private void amountTextBox_TextChanged(object sender, Windows.UI.Xaml.Controls.TextChangedEventArgs e)
         {
             string amountString = amountTextBox.Text.Trim();
-            if (amountString.Length != 0 && friendListView.SelectedItems.Count > 0)
+
+            if (amountString.Length != 0)
             {
-                debtButton.IsEnabled = true;
                 amount = Convert.ToInt32(amountString);
+                if(friendListView.SelectedItems.Count > 0)
+                    debtButton.IsEnabled = true;
+                else
+                    debtButton.IsEnabled = false;
             }
             else
-            {
                 debtButton.IsEnabled = false;
-            } 
         }
 
         private async void debtButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            amountTextBox.Text = "";
             Person friend = (friendListView.SelectedItem as FriendListViewItem).person;
             await borrow(me, friend, amount);
             await borrow(friend, me, -amount);

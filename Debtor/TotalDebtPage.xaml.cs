@@ -8,12 +8,15 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
@@ -134,9 +137,12 @@ namespace Debtor
                 debtListView.Items.Clear();
                 foreach (Debt debt in debts)
                 {
-                    amount += debt.amount;
-                    DebtListViewItem debtListViewItem = new DebtListViewItem(debt);
-                    debtListView.Items.Add(debtListViewItem);
+                    if (debt.amount != 0)
+                    {
+                        amount += debt.amount;
+                        DebtListViewItem debtListViewItem = new DebtListViewItem(debt);
+                        debtListView.Items.Add(debtListViewItem);
+                    }
                 }
                 totalDebtText.Text = "" + amount;
             }
@@ -155,8 +161,13 @@ namespace Debtor
             catch (MobileServiceInvalidOperationException e)
             {
             }
-
+            
             return debts;
+        }
+
+        private void helpAppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(InstructionPage));
         }
 
         #endregion

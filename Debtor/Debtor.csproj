@@ -116,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InstructionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +160,9 @@
     <Compile Include="FriendRelation.cs" />
     <Compile Include="HttpBank.cs" />
     <Compile Include="HttpFriendManager.cs" />
+    <Compile Include="InstructionPage.xaml.cs">
+      <DependentUpon>InstructionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -181,14 +188,16 @@
     <None Include="Debtor_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="Debtor_TemporaryKey.pfx" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\WideLogo.png" />
+    <Content Include="Assets\BigLogo.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
     <Content Include="Fonts\LiveSymbol.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\SmallLogo.scale-100.png" />
-    <Content Include="Assets\SplashScreen.scale-100.png" />
-    <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Common\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -13,12 +13,12 @@ namespace Debtor
         private static FriendManager friendManagerInstance { get; set; }
         
 
-        public static Person makePerson(MobileServiceUser user, string person_name)
+        public static Person makePerson(string userId, string person_name, string token)
         {
             // Set Instance
             bankInstance = new TestBank();
             friendManagerInstance = new TestFriendManager();
-            Person person = new Person(user.UserId, person_name, user.MobileServiceAuthenticationToken, bankInstance, friendManagerInstance);
+            Person person = new Person(userId, person_name, token, bankInstance, friendManagerInstance);
             return person;
         }
     }

@@ -1,6 +1,6 @@
 ﻿<Page
     x:Name="pageRoot"
-    x:Class="Debtor.DebtPage"
+    x:Class="Debtor.InstructionPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -43,31 +43,47 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="빚지기" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+            <TextBlock x:Name="pageTitle" Text="설명서" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
         <Grid Grid.Row="1">
         	<Grid.RowDefinitions>
         		<RowDefinition Height="60"/>
-        		<RowDefinition Height="3*"/>
-        		<RowDefinition/>
-        		<RowDefinition/>
         		<RowDefinition/>
         	</Grid.RowDefinitions>
-        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="친구 리스트" VerticalAlignment="Center" FontSize="33.333" Margin="120,0,0,0"/>
-        	<Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="120,0">
-        		<ListView x:Name="friendListView" SelectionChanged="friendListView_SelectionChanged" SelectionMode="Single"/>
-        	</Border>
-        	<StackPanel VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-        		<TextBox x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="등록할 친구의 별명" FontSize="26.667" Margin="0,0,20,0" TextChanged="friendLiveIdTextBox_TextChanged" MaxLength="10"/>
-        		<Button x:Name="friendRegisterButton" Content="친구등록" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" IsEnabled="False" Click="friendRegisterButton_Click"/>
-        	</StackPanel>
-        	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center">
-        		<TextBlock TextWrapping="Wrap" Text="얼마?" FontSize="26.667" Margin="0,0,10,0" VerticalAlignment="Center"/>
-        		<TextBox x:Name="amountTextBox" TextWrapping="Wrap" FontSize="26.667" TextChanged="amountTextBox_TextChanged" InputScope="Number" KeyDown="amountTextBox_KeyDown" PlaceholderText="0" />
-        		<TextBlock TextWrapping="Wrap" Text="원" FontSize="26.667" VerticalAlignment="Center"/>
-        	</StackPanel>
-        	<Button x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="33.333" Click="debtButton_Click" IsEnabled="False"/>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="120"/>
+        		<ColumnDefinition/>
+        		<ColumnDefinition Width="20"/>
+        		<ColumnDefinition/>
+        		<ColumnDefinition Width="120"/>
+        	</Grid.ColumnDefinitions>
+			<TextBlock TextWrapping="Wrap" FontSize="21.333" Grid.Row="1" Grid.Column="1">
+        		<Run FontWeight="Bold" Text="빚쟁이 앱 의미"/>
+        		<LineBreak/><LineBreak/><LineBreak/>
+        		<Run Text="오늘은 너가 쏴, 내일은 내가 쏴."/>
+        		<LineBreak/>
+        		<Run Text="어? 우리 서로 빚진게 얼마씩이지?"/>
+        		<LineBreak/><LineBreak/>
+        		<Run Text="친구끼리 햇갈리는 돈관계. 하지만 잊을 수 없는 돈관계."/>
+        		<LineBreak/>
+        		<Run Text="이제는 빚쟁이 앱으로 기록하세요."/>
+        		<LineBreak/>
+        		<Run Text="빚쟁이 앱과 함께라면 친구와 깨끗한 돈관계를 맺을 수 있습니다."/>
+        	</TextBlock>
+			<TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="3" FontSize="18.667">
+				<Run FontWeight="Bold" Text="사용법"/>
+        		<LineBreak/><LineBreak/><LineBreak/>
+        		<Run Text="1. Microsoft Live Id로 로그인을 한다."/>
+        		<LineBreak/><LineBreak/>
+        		<Run Text="2. 닉네임을 정한다."/>
+        		<LineBreak/><LineBreak/>
+        		<Run Text="3. '빚지기' 메뉴에서 닉네임으로 돈관계를 맺을 친구를 등록한다."/>
+        		<LineBreak/><LineBreak/>
+        		<Run Text="4. 빚이 생길 때마다, '빚지기' 메뉴에서 빌린 사람이 목록에서 친구를 선택하고 빚을 기록한다."/>
+        		<LineBreak/><LineBreak/>
+        		<Run Text="5. 메인 화면에서 표시해주는 빚 관계와 총 빚을 보면서, 올바른 돈관리를 한다."/>
+			</TextBlock>
         </Grid>
     </Grid>
 </Page>

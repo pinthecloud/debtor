@@ -14,6 +14,13 @@
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">My Application</x:String>
     </Page.Resources>
+	<Page.BottomAppBar>
+		<AppBar>
+			<Grid>
+				<AppBarButton x:Name="helpAppBarButton" Label="설명서" HorizontalAlignment="Right" Icon="Help" Click="helpAppBarButton_Click" />
+			</Grid>
+		</AppBar>
+	</Page.BottomAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -39,7 +46,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="pageTitle" Text="빚쟁이" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-            <Button x:Name="changeAccount" Content="계정바꾸기" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,40,0" Click="changeAccount_Click" FontSize="26.667"/>
+            <Button x:Name="changeAccount" Content="계정바꾸기" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,20,0" Click="changeAccount_Click" FontSize="26.667"/>
         </Grid>
         <Grid Grid.Row="1">
         	<Grid.RowDefinitions>
@@ -48,7 +55,7 @@
         		<RowDefinition Height="0.5*"/>
         	</Grid.RowDefinitions>
         	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="빚 리스트" VerticalAlignment="Center" Margin="120,0,0,0" FontSize="33.333"/>
-        	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+        	<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,20,0">
         		<TextBlock TextWrapping="Wrap" Text="총 빛:" FontSize="26.667"/>
         		<TextBlock x:Name="totalDebtText" TextWrapping="Wrap" Text="0" FontSize="26.667"/>
         		<TextBlock TextWrapping="Wrap" Text="원" FontSize="26.667"/>

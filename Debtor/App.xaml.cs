@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using Microsoft.WindowsAzure.MobileServices;
+using Microsoft.Live;
 
 
 // 새 응용 프로그램 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234227에 나와 있습니다.
@@ -31,6 +32,10 @@ namespace Debtor
             "https://debtor.azure-mobile.net/",
             "xVyJoXUzdLcvtmzpXnHbFRUiLQTgAZ33"
             );
+
+        // Settings
+        Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
 
         /// <summary>
         /// Singleton 응용 프로그램 개체를 초기화합니다.  이것은 실행되는 작성 코드의 첫 번째

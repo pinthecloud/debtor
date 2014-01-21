@@ -9,10 +9,12 @@
     
     <Grid>
     	<Border BorderBrush="Black" BorderThickness="1">
-    		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-    			<TextBlock TextWrapping="Wrap" Text="이름 :" Margin="0,0,20,0" FontSize="33.333"/>
-    			<TextBlock x:Name="nameText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="33.333"/>
-    		</StackPanel>
+    		<Grid>
+    			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+    				<TextBlock TextWrapping="Wrap" Text="이름 :" Margin="0,0,10,0" FontSize="18.667"/>
+    				<TextBlock x:Name="nameText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18.667"/>
+    			</StackPanel>
+    		</Grid>
     	</Border>
 
     </Grid>
