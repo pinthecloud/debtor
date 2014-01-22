@@ -33,9 +33,6 @@ namespace Debtor
         // Mobile Service
         private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
 
-        // Settings
-        Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-
         // Private
         private MobileServiceUser user;
         private string name;
@@ -132,6 +129,12 @@ namespace Debtor
             {
                 Person person = PersonFactory.makePerson(user.UserId, name, user.MobileServiceAuthenticationToken);
                 await personTable.InsertAsync(person);
+
+                App.roamingSettings.Values[GlobalVariable.ID] = person.id;
+                App.roamingSettings.Values[GlobalVariable.LIVE_ID] = person.person_live_id;
+                App.roamingSettings.Values[GlobalVariable.NAME] = person.person_name;
+                App.roamingSettings.Values[GlobalVariable.TOKEN] = person.token;
+
                 this.Frame.Navigate(typeof(TotalDebtPage), person);
             }
             else

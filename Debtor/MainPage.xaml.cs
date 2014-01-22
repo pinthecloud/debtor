@@ -20,6 +20,7 @@ using Windows.UI.Popups;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Microsoft.Live;
+using Newtonsoft.Json.Linq;
 
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
@@ -42,6 +43,7 @@ namespace Debtor
 
         // Mobile Service
         private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
+        private LiveConnectSession session;
 
         /// <summary>
         /// 이는 강력한 형식의 뷰 모델로 변경될 수 있습니다.
@@ -201,8 +203,8 @@ namespace Debtor
         private async void loginButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             // Get User
-            MobileServiceUser user = await authenticate();
-            
+            MobileServiceUser user = await authenticate(false);
+
             // Auth Success
             if (user != null)
             {
@@ -211,23 +213,135 @@ namespace Debtor
                     this.Frame.Navigate(typeof(NamingPage), user);
                 else   // Again Login
                 {
+                    App.roamingSettings.Values[GlobalVariable.ID] = person.id;
+                    App.roamingSettings.Values[GlobalVariable.LIVE_ID] = person.person_live_id;
+                    App.roamingSettings.Values[GlobalVariable.NAME] = person.person_name;
+                    App.roamingSettings.Values[GlobalVariable.TOKEN] = user.MobileServiceAuthenticationToken;
+                    person.token = user.MobileServiceAuthenticationToken;
+
+                    await personTable.UpdateAsync(person);
+
                     this.Frame.Navigate(typeof(TotalDebtPage), person);
                 }
             }
         }
 
         // Normal Auth
-        private async Task<MobileServiceUser> authenticate()
+        private async Task<MobileServiceUser> authenticate(bool singleSignOn)
         {
-            MobileServiceUser user = null;
             try
             {
-                user = await App.MobileService
-                    .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
+                await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, singleSignOn);
             }
             catch (InvalidOperationException)
             {
             }
+            return App.MobileService.CurrentUser;
+        }
+
+        // Normal Auth
+        private async Task<MobileServiceUser> authenticate2(bool singleSignOn)
+        {
+            LiveAuthClient liveIdClient = new LiveAuthClient("https://debtor.azure-mobile.net/");
+            var reqs = new[] { "wl.signin", "wl.basic", "wl.offline_access" };
+
+            LiveLoginResult init = await liveIdClient.InitializeAsync(reqs);
+            if (init.Status != LiveConnectSessionStatus.Connected)
+            {
+                try
+                {
+                    await App.MobileService
+                        .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, singleSignOn);
+                }
+                catch (InvalidOperationException)
+                {
+                }
+            }
+
+            return App.MobileService.CurrentUser;
+        }
+
+        private async Task<MobileServiceUser> singleSignOnAuthenticate()
+        {
+            // This is the example for a Windows Store app. For a Windows Phone app, 
+            // instead instantiate the Live client with the Client ID value.
+            LiveAuthClient liveIdClient =
+                new LiveAuthClient("https://debtor.azure-mobile.net/");
+
+            MobileServiceUser loginResult = null;
+            LiveLoginResult result = await liveIdClient.LoginAsync(new[] { "wl.basic" });
+            if (result.Status == LiveConnectSessionStatus.Connected)
+            {
+                session = result.Session;
+                LiveConnectClient client = new LiveConnectClient(result.Session);
+                LiveOperationResult meResult = await client.GetAsync("me");
+                loginResult = await App.MobileService
+                    .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+            }
+
+            return loginResult;
+        }
+
+        private async Task<MobileServiceUser> singleSignOnAuthenticate2()
+        {
+            LiveAuthClient liveIdClient = new LiveAuthClient("https://debtor.azure-mobile.net/");
+            var reqs = new[] { "wl.signin", "wl.basic", "wl.offline_access"};
+            MobileServiceUser user = null;
+
+            LiveLoginResult init = await liveIdClient.InitializeAsync(reqs);
+            if(init.Status != LiveConnectSessionStatus.Connected)
+            {
+                LiveLoginResult logStatus = await liveIdClient.LoginAsync(reqs);
+                if (logStatus.Status == LiveConnectSessionStatus.Connected)
+                {
+                    session = logStatus.Session;
+                    user = await App.MobileService.LoginAsync(session.AuthenticationToken);
+                }
+            }
+
+            return user;
+        }
+
+        private async Task<MobileServiceUser> singleSignOnAuthenticate3()
+        {
+            MobileServiceUser user = null;
+            try
+            {
+                LiveAuthClient auth = new LiveAuthClient("https://debtor.azure-mobile.net/");
+                LiveLoginResult result = await auth.InitializeAsync(new string[] { "wl.basic", "wl.offline_access", "wl.signin" });
+                if (result.Status != LiveConnectSessionStatus.Connected)
+                    result = await auth.LoginAsync(new string[] { "wl.basic", "wl.offline_access", "wl.signin" });
+
+                if (result.Status == LiveConnectSessionStatus.Connected)
+                {
+                    session = result.Session;
+                    LiveConnectClient client = new LiveConnectClient(result.Session);
+                    LiveOperationResult meResult = await client.GetAsync("me");
+                    user = await App.MobileService
+                        .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+
+                    Person person = await isExistedPerson(user.UserId);
+                    if (person == null)   // First Login
+                        this.Frame.Navigate(typeof(NamingPage), user);
+                    else   // Again Login
+                    {
+                        App.roamingSettings.Values[GlobalVariable.ID] = person.id;
+                        App.roamingSettings.Values[GlobalVariable.LIVE_ID] = person.person_live_id;
+                        App.roamingSettings.Values[GlobalVariable.NAME] = person.person_name;
+                        App.roamingSettings.Values[GlobalVariable.TOKEN] = user.MobileServiceAuthenticationToken;
+                        person.token = user.MobileServiceAuthenticationToken;
+
+                        await personTable.UpdateAsync(person);
+
+                        this.Frame.Navigate(typeof(TotalDebtPage), person);
+                    }
+                }
+            }
+            catch (LiveAuthException exc)
+            {
+            }
+
             return user;
         }
 

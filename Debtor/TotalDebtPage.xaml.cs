@@ -1,4 +1,5 @@
 ﻿using Debtor.Common;
+using Microsoft.Live;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
@@ -118,6 +119,13 @@ namespace Debtor
 
         private void changeAccount_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            App.MobileService.Logout();
+
+            App.roamingSettings.Values[GlobalVariable.ID] = null;
+            App.roamingSettings.Values[GlobalVariable.LIVE_ID] = null;
+            App.roamingSettings.Values[GlobalVariable.NAME] = null;
+            App.roamingSettings.Values[GlobalVariable.TOKEN] = null;
+
             this.Frame.Navigate(typeof(MainPage));
         }
 

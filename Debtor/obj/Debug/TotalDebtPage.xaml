@@ -46,7 +46,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="pageTitle" Text="빚쟁이" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-            <Button x:ConnectionId='3' x:Name="changeAccount" Content="계정바꾸기" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,20,0"                             FontSize="26.667"/>
+            <Button x:ConnectionId='3' x:Name="changeAccount" Content="로그아웃" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,20,0"                             FontSize="26.667"/>
         </Grid>
         <Grid Grid.Row="1">
         	<Grid.RowDefinitions>

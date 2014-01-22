@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="FriendManager.cs" />
     <Compile Include="FriendRelation.cs" />
+    <Compile Include="GlobalVariable.cs" />
     <Compile Include="HttpBank.cs" />
     <Compile Include="HttpFriendManager.cs" />
     <Compile Include="InstructionPage.xaml.cs">

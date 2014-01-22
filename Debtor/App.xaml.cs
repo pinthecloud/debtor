@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.Live;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using Windows.Data.Json;
 
 
 // 새 응용 프로그램 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234227에 나와 있습니다.
@@ -34,8 +37,10 @@ namespace Debtor
             );
 
         // Settings
-        Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+        public static Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
 
+        // Mobile Service
+        private IMobileServiceTable<Person> personTable = App.MobileService.GetTable<Person>();
 
         /// <summary>
         /// Singleton 응용 프로그램 개체를 초기화합니다.  이것은 실행되는 작성 코드의 첫 번째
@@ -52,7 +57,7 @@ namespace Debtor
         /// 응용 프로그램에서 특정 파일을 열기 시작할 때 사용됩니다.
         /// </summary>
         /// <param name="e">시작 요청 및 프로세스에 대한 정보입니다.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -89,7 +94,20 @@ namespace Debtor
                 // 탐색 스택이 복원되지 않으면 첫 번째 페이지로 돌아가고
                 // 필요한 정보를 탐색 매개 변수로 전달하여 새 페이지를
                 // 구성합니다.
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+
+                if (App.roamingSettings.Values[GlobalVariable.ID] == null)  // first
+                {
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                }
+                else  // Not first
+                {
+                    MobileServiceUser user = new MobileServiceUser(App.roamingSettings.Values[GlobalVariable.LIVE_ID].ToString());
+                    user.MobileServiceAuthenticationToken = App.roamingSettings.Values[GlobalVariable.TOKEN].ToString();
+                    App.MobileService.CurrentUser = user;
+
+                    Person person = await isExistedPerson(user.UserId);
+                    rootFrame.Navigate(typeof(TotalDebtPage), person);
+                }
             }
             // 현재 창이 활성 창인지 확인
             Window.Current.Activate();
@@ -117,6 +135,40 @@ namespace Debtor
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: 응용 프로그램 상태를 저장하고 백그라운드 작업을 모두 중지합니다.
             deferral.Complete();
+        }
+
+        // Normal Auth
+        private async Task<MobileServiceUser> authenticate(bool singleSignOn)
+        {
+            try
+            {
+                await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, singleSignOn);
+            }
+            catch (InvalidOperationException)
+            {
+            }
+            return App.MobileService.CurrentUser;
+        }
+
+        // Check whether it exists in DB
+        private async Task<Person> isExistedPerson(string person_live_id)
+        {
+            MobileServiceCollection<Person, Person> people = null;
+            try
+            {
+                people = await personTable
+                    .Where(p => p.person_live_id == person_live_id)
+                    .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+            }
+
+            if (people.Count > 0)
+                return people.First();
+            else
+                return null;
         }
     }
 }
