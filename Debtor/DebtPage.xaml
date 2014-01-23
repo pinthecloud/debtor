@@ -59,12 +59,12 @@
         		<ListView x:Name="friendListView" SelectionChanged="friendListView_SelectionChanged" SelectionMode="Single"/>
         	</Border>
         	<StackPanel VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-        		<TextBox x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="등록할 친구의 별명" FontSize="26.667" Margin="0,0,20,0" TextChanged="friendLiveIdTextBox_TextChanged" MaxLength="10"/>
+        		<TextBox x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="등록할 친구의 별명" FontSize="26.667" Margin="0,0,20,0" TextChanged="friendLiveIdTextBox_TextChanged" MaxLength="10" Width="300"/>
         		<Button x:Name="friendRegisterButton" Content="친구등록" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" IsEnabled="False" Click="friendRegisterButton_Click"/>
         	</StackPanel>
         	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center">
         		<TextBlock TextWrapping="Wrap" Text="얼마?" FontSize="26.667" Margin="0,0,10,0" VerticalAlignment="Center"/>
-        		<TextBox x:Name="amountTextBox" TextWrapping="Wrap" FontSize="26.667" TextChanged="amountTextBox_TextChanged" InputScope="Number" KeyDown="amountTextBox_KeyDown" PlaceholderText="0" />
+        		<TextBox x:Name="amountTextBox" TextWrapping="Wrap" FontSize="26.667" TextChanged="amountTextBox_TextChanged" InputScope="Number" KeyDown="amountTextBox_KeyDown" PlaceholderText="0" Width="170" MaxLength="10" />
         		<TextBlock TextWrapping="Wrap" Text="원" FontSize="26.667" VerticalAlignment="Center"/>
         	</StackPanel>
         	<Button x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="33.333" Click="debtButton_Click" IsEnabled="False"/>

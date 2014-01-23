@@ -5,127 +5,127 @@
     <WindowsUser>rfrost</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>58514Seungmin.38124A4B2577</PackageIdentityName>
-    <RegisteredManifestChecksum>1F1386AB411EBCB465DF54CDB8BF5E842420E258F504B13D94C6DF4F580375DC</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>58514Seungmin.38124A4B2577_1.1.0.0_neutral__k6sm0fw9r4nmj</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>58514Seungmin.38124A4B2577_k6sm0fw9r4nmj!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>58514Seungmin.38124A4B2577</RegisteredPackageID>
+    <PackageIdentityName>58514Seungmin.64700C395C514</PackageIdentityName>
+    <RegisteredManifestChecksum>A662189BA5E3E49A21D93CEF8DEA711EF5FFD74194716CC3CB089422F1A4097B</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>58514Seungmin.64700C395C514_1.1.0.0_neutral__k6sm0fw9r4nmj</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>58514Seungmin.64700C395C514_k6sm0fw9r4nmj!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>58514Seungmin.64700C395C514</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=5F5145DF-4FDD-41CD-9C55-BEE4732A445B</RegisteredPackagePublisher>
     <RegisteredVersion>1.1.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-01-22T05:42:34.467</Modified>
+      <Modified>2014-01-23T03:28:13.852</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\Debtor.exe">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\Debtor.exe">
       <PackagePath>Debtor.exe</PackagePath>
-      <Modified>2014-01-22T15:55:01.319</Modified>
+      <Modified>2014-01-23T03:28:13.413</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\LiveSDK.5.5\WindowsXAML\Microsoft.Live.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\LiveSDK.5.5\WindowsXAML\Microsoft.Live.dll">
       <PackagePath>Microsoft.Live.dll</PackagePath>
       <Modified>2014-01-20T13:49:41.030</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.dll">
       <PackagePath>Microsoft.WindowsAzure.Mobile.dll</PackagePath>
       <Modified>2014-01-20T13:49:43.334</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\WindowsAzure.MobileServices.1.1.2\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.dll">
       <PackagePath>Microsoft.WindowsAzure.Mobile.Ext.dll</PackagePath>
       <Modified>2014-01-20T13:49:43.306</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
       <Modified>2014-01-20T13:49:43.142</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Extensions.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Extensions.dll">
       <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
       <Modified>2014-01-20T13:49:42.791</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Primitives.dll">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Primitives.dll">
       <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
       <Modified>2014-01-20T13:49:42.803</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SmallLogo.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T16:00:05.310</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\Logo.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T15:58:08.781</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\WideLogo.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\WideLogo.png">
       <PackagePath>Assets\WideLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T15:58:08.799</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\BigLogo.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\BigLogo.png">
       <PackagePath>Assets\BigLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T15:58:08.804</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T15:58:08.779</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-01-20T15:58:08.802</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Fonts\LiveSymbol.ttf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Fonts\LiveSymbol.ttf">
       <PackagePath>Fonts\LiveSymbol.ttf</PackagePath>
       <Modified>2014-01-20T13:49:04.989</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Common\ReadMe.txt">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\Common\ReadMe.txt">
       <PackagePath>Common\ReadMe.txt</PackagePath>
       <Modified>2014-01-20T13:49:04.934</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-01-20T13:49:40.074</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtListViewItem.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\DebtListViewItem.xbf">
       <PackagePath>DebtListViewItem.xbf</PackagePath>
       <Modified>2014-01-20T15:46:57.205</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\DebtPage.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\DebtPage.xbf">
       <PackagePath>DebtPage.xbf</PackagePath>
-      <Modified>2014-01-20T15:46:57.209</Modified>
+      <Modified>2014-01-22T16:00:44.882</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\FriendListViewItem.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\FriendListViewItem.xbf">
       <PackagePath>FriendListViewItem.xbf</PackagePath>
       <Modified>2014-01-20T15:46:57.212</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\InstructionPage.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\InstructionPage.xbf">
       <PackagePath>InstructionPage.xbf</PackagePath>
       <Modified>2014-01-20T15:24:32.034</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
       <Modified>2014-01-22T06:13:25.067</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\NamingPage.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\NamingPage.xbf">
       <PackagePath>NamingPage.xbf</PackagePath>
       <Modified>2014-01-20T15:17:45.406</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\PrivatePolicyFlyout.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\PrivatePolicyFlyout.xbf">
       <PackagePath>PrivatePolicyFlyout.xbf</PackagePath>
       <Modified>2014-01-20T13:49:40.872</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\TotalDebtPage.xbf">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\TotalDebtPage.xbf">
       <PackagePath>TotalDebtPage.xbf</PackagePath>
-      <Modified>2014-01-22T06:08:33.351</Modified>
+      <Modified>2014-01-22T16:26:48.457</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\Imagine Cup\빚쟁이\Debtor\Debtor\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-01-22T15:52:25.219</Modified>
+      <Modified>2014-01-23T03:28:13.547</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

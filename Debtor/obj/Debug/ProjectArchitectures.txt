@@ -1,1 +1,1 @@
-C:\Users\Seungmin\documents\visual studio 2013\Projects\Debtor\Debtor\Debtor.csproj;neutral
+D:\Imagine Cup\빚쟁이\Debtor\Debtor\Debtor.csproj;neutral

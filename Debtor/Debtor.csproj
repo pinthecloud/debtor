@@ -9,13 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Debtor</RootNamespace>
     <AssemblyName>Debtor</AssemblyName>
-    <DefaultLanguage>ko-KR</DefaultLanguage>
+    <DefaultLanguage>Ko-kr</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Debtor_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>7B74139B9D8033EC9969351FDD5B1B7A21F1FBDE</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>86EFE00173464ED80D4EB88DFCE315435B537BE3</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

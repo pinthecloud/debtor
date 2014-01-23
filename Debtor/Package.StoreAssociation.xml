@@ -349,7 +349,7 @@
     <Language Code="zu-za" InMinimumRequirementSet="false" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>58514Seungmin.38124A4B2577</MainPackageIdentityName>
+    <MainPackageIdentityName>58514Seungmin.64700C395C514</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>빚쟁이</ReservedName>
     </ReservedNames>
@@ -364,5 +364,5 @@
     <MainPackageIdentityName>58514Seungmin.923FB1B33DE</MainPackageIdentityName>
     <MainPackageIdentityName>58514Seungmin.20132</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/b0ed66bc-eaa6-4357-80d3-10e2b3b8989c" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/6eee8ae7-ec7b-4fb4-a2ea-4125dc376b47" />
 </StoreAssociation>

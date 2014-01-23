@@ -59,12 +59,12 @@
         		<ListView x:ConnectionId='5' x:Name="friendListView"                                                    SelectionMode="Single"/>
         	</Border>
         	<StackPanel VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-        		<TextBox x:ConnectionId='3' x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="등록할 친구의 별명" FontSize="26.667" Margin="0,0,20,0"                                               MaxLength="10"/>
+        		<TextBox x:ConnectionId='3' x:Name="friendLiveIdTextBox" TextWrapping="Wrap" PlaceholderText="등록할 친구의 별명" FontSize="26.667" Margin="0,0,20,0"                                               MaxLength="10" Width="300"/>
         		<Button x:ConnectionId='4' x:Name="friendRegisterButton" Content="친구등록" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" IsEnabled="False"                                   />
         	</StackPanel>
         	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center">
         		<TextBlock TextWrapping="Wrap" Text="얼마?" FontSize="26.667" Margin="0,0,10,0" VerticalAlignment="Center"/>
-        		<TextBox x:ConnectionId='2' x:Name="amountTextBox" TextWrapping="Wrap" FontSize="26.667"                                         InputScope="Number"                                 PlaceholderText="0" />
+        		<TextBox x:ConnectionId='2' x:Name="amountTextBox" TextWrapping="Wrap" FontSize="26.667"                                         InputScope="Number"                                 PlaceholderText="0" Width="170" MaxLength="10" />
         		<TextBlock TextWrapping="Wrap" Text="원" FontSize="26.667" VerticalAlignment="Center"/>
         	</StackPanel>
         	<Button x:ConnectionId='1' x:Name="debtButton" Content="빚지기" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="33.333"                          IsEnabled="False"/>
